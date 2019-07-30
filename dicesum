@@ -1,0 +1,35 @@
+#include<iostream>
+//#include <bits/stdc++.h> 
+#include<vector>
+using namespace std;
+void AllPossibleCom(int numOfDice, int sum, vector<int>&v)
+{
+	
+	if (numOfDice == 0)
+	{
+		if (sum == 0)
+		{
+			for (int j = 0; j < v.size(); j++)
+				cout << v[j] ;
+			cout << endl;
+		}
+		return;
+	}
+	for (int i = 1; i <=6; i++)
+	{
+		v.push_back(i);
+		AllPossibleCom(numOfDice - 1, sum - i, v);
+		v.pop_back();
+	}
+
+}
+
+
+int main()
+{
+	int numOfDice, sum;
+	cin >> numOfDice;
+	cin >> sum;
+	vector<int>v;
+	AllPossibleCom(numOfDice, sum, v);
+}
